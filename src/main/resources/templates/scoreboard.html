@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bảng Điểm</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<!-- Main Container -->
+<div class="main-container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top">
+      <div class="logo"><a th:href="@{home}">Trang chủ </a></div>
+      <div class="user-info">
+      	<div class="user-name"><p th:text=" 'Sinh viên: ' + ${session.tksv.ten}"></p></div>
+        <div class="logout">Đăng xuất</div>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <nav class="navigation">
+        <ul>
+          <li>Xem điểm</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="content">
+  <p th:text=" 'Điểm trung bình tích lũy hệ 4: ' + ${session.tksv.diemTB}"></p><br>
+  <p th:text=" 'Số tín chỉ đạt được: ' + ${session.tksv.soTC}"></p><br>
+  <p th:text=" 'Số tín chỉ còn nợ: ' + ${session.tksv.soTCno}"></p><br>
+  
+  <div th:each="kihoc : ${session.tksv.dsTKKihocSv}">
+    <h3> <span th:text=" 'Học kỳ ' + ${kihoc.ten} + ' - Năm học ' + ${kihoc.namhoc.ten} "></span></h3>
+  
+    <table class="grades-table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <th>Stt</th>
+          <th>Mã MH</th>
+          <th>Tên môn học</th>
+          <th>Số tín chỉ</th>
+		  <th>Chuyên cần</th>
+		  <th>Giữa kì</th>
+		  <th>BTL</th>
+		  <th>Điểm thi</th>
+		  <th>Điểm TK (10)</th>
+		  <th>Điểm TK (4)</th>
+		  <th>Điểm TK (c)</th>
+		  <th>Kết quả</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        <tr th:each="grade ,i : ${kihoc.dsmon}">
+          <td th:text="${i.index + 1}">1</td>
+          <td th:text="${grade.monhoc.monhoc.id}">BAS1153</td>
+          <td th:text="${grade.monhoc.monhoc.ten}">Lịch sử Đảng cộng sản Việt Nam</td>
+          <td th:text="${grade.monhoc.monhoc.soTC}">2</td>
+          <td th:text="${grade.dsdiemtp[1].diem}">7</td>
+          <td th:text="${grade.dsdiemtp[2].diem}">7</td>
+          <td th:text="${grade.dsdiemtp[3].diem}">7</td>
+          <td th:text="${grade.diemThi}">7</td>
+          <td th:text="${grade.diemTB10}">7.0</td>
+          <td th:text="${grade.diemTB4}">2.8</td>
+          <td th:text="${grade.diemTBc}">C</td>
+          <td th:text="${grade.ketqua}">Đạt</td>
+        </tr>
+      </tbody>
+  	</table>
+  	<p><span th:text=" '- Điểm trung bình kì học hệ 4: ' + ${kihoc.diemTB}"></span></p>
+  	<p><span th:text=" '- Số tín chỉ đạt học kỳ: ' + ${kihoc.soTc}"></span></p>
+  	<p><span th:text=" '- Số tín chỉ nợ học kỳ: ' + ${kihoc.soTcno}"></span></p>
+  	</br>
+  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2023 Học viện Công nghệ Bưu chính Viễn thông</p>
+  </footer>
+
+</div>
+
+</body>
+</html>

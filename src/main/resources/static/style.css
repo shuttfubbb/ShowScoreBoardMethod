@@ -1,0 +1,98 @@
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font and background */
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Main container styling */
+.main-container {
+  min-height: 100%;
+  position: relative;
+}
+
+/* Header styling */
+.header {
+  background-color: #B22222;
+  color: white;
+  padding: 10px 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.header-bottom {
+  background-color: #a00;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+}
+
+.navigation li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.logout {
+  cursor: pointer;
+}
+
+/* Content styling */
+.content {
+  padding: 20px;
+  background-color: #f1f1f1;
+  padding-bottom: 60px; /* Footer height */
+}
+
+/* Table styling */
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.grades-table thead {
+  background-color: #B22222;
+  color: white;
+}
+
+.grades-table th, .grades-table td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+.grades-table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Footer styling */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #B22222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
